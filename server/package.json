@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "employee management portal",
+  "main": "index.js",
+  "author": "ekaji",
+  "license": "MIT",
+  "scripts":{
+    "start": "node src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
