@@ -6,7 +6,8 @@
   "author": "ekaji",
   "license": "MIT",
   "scripts":{
-    "start": "node src/index.js"
+    "start": "node server/index.js",
+    "build": "cd client && yarn add && yarn run build"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
