@@ -9,7 +9,9 @@
   "scripts": { 
     "start:client": "cd client && yarn start",
     "start:server": "cd server && nodemon server",
-    "dev": "concurrently \"yarn start:server\" \"yarn start:client\""
+    "dev": "concurrently \"yarn start:server\" \"yarn start:client\"",
+    "start": "cd server && node index.js",
+    "build": "cd client && yarn add && yarn run build"
   },
   "dependencies": {
     "concurrently": "^6.3.0"

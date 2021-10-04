@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts":{
     "start": "node server/index.js",
-    "build": "cd client && yarn add && yarn run build"
+    "build": "cd client && yarn add && yarn run"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
