@@ -2,19 +2,22 @@
   "name": "employee-management-portal",
   "version": "1.0.0",
   "description": "an employee management portal",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/Ekaji/employee-management-portal.git",
   "author": "ekaji <ekajionah@gmail.com>",
   "license": "MIT",
   "scripts": { 
     "start:client": "cd client && yarn start",
-    "start:server": "cd server && nodemon server",
+    "start:server": "nodemon server.js",
     "dev": "concurrently \"yarn start:server\" \"yarn start:client\"",
-    "start": "cd server && node index.js",
-    "build": "cd client && yarn add && yarn run build"
+    "start": "node server.js",
+    "heroku-postbuild": "yarn add --prefix client && yarn run build --prefix client"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   },
   "dependencies": {
-    "concurrently": "^6.3.0"
+    "concurrently": "^6.3.0",
+    "express": "^4.17.1"
   }
-
 }
