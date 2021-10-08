@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-base",
+        "eslint:recommended",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+        "eqeqeq": "error",
+        "no-console":"warn",
+        "prettier/prettier": "error"
+    },
+    "ignorePatterns": [
+        "node_modules",
+        "build",
+        "dist",
+        "public"
+    ]
+}

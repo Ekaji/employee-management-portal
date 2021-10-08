@@ -6,16 +6,34 @@
   "repository": "https://github.com/Ekaji/employee-management-portal.git",
   "author": "ekaji <ekajionah@gmail.com>",
   "license": "MIT",
-  "scripts": { 
+  "scripts": {
+    "lint": "eslint --cache \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint --cache --fix \"**/*.{js,jsx,ts,tsx}\"",
     "start:client": "cd client && yarn start",
     "start:server": "nodemon server.js",
     "dev": "concurrently \"yarn start:server\" \"yarn start:client\"",
     "start": "node server.js",
     "heroku-postbuild": "cd client && yarn && yarn run build"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,}": "yarn run lint:fix"
+  },
   "devDependencies": {
+    "concurrently": "^6.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.2.0",
     "nodemon": "^2.0.13",
-    "concurrently": "^6.3.0"
+    "prettier": "^2.4.1"
   },
   "dependencies": {
     "express": "^4.17.1"
