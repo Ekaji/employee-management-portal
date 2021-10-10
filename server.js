@@ -1,9 +1,25 @@
 const express = require("express");
+const CORS = require("cors");
+const path = require("path");
+const mongoose = require("mongoose");
+const { mongodbURI } = require("./config");
 
 const app = express();
-const path = require("path");
+
+app.use(CORS());
+app.use(express.json());
+
+mongoose
+  .connect(`${mongodbURI}`)
+  .then(() => {
+    console.log("sucessfully connected to mongodb");
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 const PORT = process.env.PORT || 3001;
+
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.get("/api", (req, res) => {
