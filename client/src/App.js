@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import EmployeForm from './components/EmployeForm';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     return (
         <div className="App">
             <h1>{!data ? 'loading...' : data}</h1>
+            <EmployeForm />
         </div>
     );
 }
