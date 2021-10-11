@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 
-const EmployeForm = () => {
+
+const CreateEmployeesForm = () => {
 
     const [formData, updateFormData] = useState({
         name: '',
@@ -19,25 +20,15 @@ const EmployeForm = () => {
 
     const handleChange = (e) => {
         updateFormData({
-          ...formData, [e.target.name] : e.target.value 
+        ...formData, [e.target.name] : e.target.value 
         })
     } 
 
     const handleClick = (e) => {
         e.preventDefault()
         axios.post('/api/employe', formData)
-        .then(response => console.log(response.data))
-    }
-
-     const getItems = (e) => {
-        e.preventDefault()
-        axios.get('/api/employe')
         .then(response => console.log(response))
-        .catch((error) => {
-            console.log(error)
-        })
     }
-
 
     return(
         <div>
@@ -87,10 +78,9 @@ const EmployeForm = () => {
             </div>
             <div>
                 <input type='submit' onClick={handleClick} />
-                <input type='submit' value='getitems' onClick={getItems} />
             </div>
         </div>
     )
 }
 
-export default EmployeForm
+export default CreateEmployeesForm
