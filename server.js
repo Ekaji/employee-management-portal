@@ -57,6 +57,18 @@ app.get("/api/employe", (req, res) => {
     });
 });
 
+app.get("/api/employe/:id", (req, res) => {
+  Employe.findOne({
+    _id: req.params.id,
+  })
+    .then((employe) => {
+      res.status(200).json({ employe });
+    })
+    .catch((error) => {
+      res.status(400).json({ error });
+    });
+});
+
 app.get("/api", (req, res) => {
   res.json({ message: "hello world" });
 });

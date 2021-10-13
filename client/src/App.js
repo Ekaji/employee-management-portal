@@ -1,23 +1,26 @@
-import {useState, useEffect} from 'react'
 import CreateEmployeesForm from './components/CreateEmployeesForm';
 import FetchEmployees from './components/FetchEmployees';
+import Header from './components/Header';
+import Details from './components/Details';
+import Form from './components/Form';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 function App() {
 
-  // const [data, setData] = useState(null)
-
-  // useEffect(() => {
-  //   fetch('/api')
-  //   .then((res) => res.json())
-  //   .then((data) => setData(data.message))
-  // },[])
-
     return (
         <div className="App">
-            {/* <h1>{!data ? 'loading...' : data}</h1> */}
-            {/* <CreateEmployeesForm /> */}
-            <FetchEmployees />
+          <div className="container mx-auto px-4 sm:px-8 " > 
+            <div className="py-8">
+              <Header />
+              <Switch>
+                <Route path="/" component={FetchEmployees} exact/>
+                <Route path="/create" component={CreateEmployeesForm} />
+                <Route path="/details/:id" component={Details} />
+                <Route path="/form" component={Form} />
+              </Switch>
+            </div>
+          </div>
         </div>
     );
 }

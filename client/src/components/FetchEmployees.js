@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {Link} from "react-router-dom";
 import axios from 'axios'
 
 const FetchEmployees = () => {
@@ -21,62 +22,116 @@ const FetchEmployees = () => {
 
     return(
         <div>
-{/* <link
-	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-	rel="stylesheet"> */}
-<div className="flex items-center justify-center min-h-screen bg-gray-900">
-	<div className="col-span-12">
-		<div className="overflow-auto lg:overflow-visible ">
-			<table className="table text-gray-400 border-separate space-y-6 text-sm">
-				<thead className="bg-gray-800 text-gray-500">
-					<tr>
-						<th className="p-3">Name & Email</th>
-						<th className="p-3 text-left">Department</th>
-						<th className="p-3 text-left">Price</th>
-						<th className="p-3 text-left">employed</th>
-						<th className="p-3 text-left">ID</th>
-					</tr>
-				</thead>
-                { data !== null ? data.employe.map(data => (
-                <tbody>
-					<tr className="bg-gray-800">
-						<td className="p-3">
-							<div className="flex align-items-center">
-								<img className="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash" />
-								<div className="ml-3">
-									<div className="">{data.name}</div>
-									<div className="text-gray-500">{data.email}</div>
-								</div>
-							</div>
-						</td>
-						<td className="p-3">
-							Technology
-						</td>
-						<td className="p-3 font-bold">
-							200.00$
-						</td>
-						<td className="p-3">
-							<span className="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
-						</td>
-						<td className="p-3">
-							<a href="/#" className="text-gray-400 hover:text-gray-100 mr-2">
-								<i className="material-icons-outlined text-base">visibility</i>
-							</a>
-							<a href="/#" className="text-gray-400 hover:text-gray-100 mx-2"> {/* button  */} 
-								<i className="material-icons-outlined text-base">Details</i>
-							</a>
-						</td>
-					</tr>
-				</tbody>
-                ) ) : "loading"}
-				
-			</table>
-		</div>
-	</div>
-</div>
-<style>
-	
-</style>
+			<div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+				<div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+					<table className="min-w-full ">
+						<thead>
+							<tr>
+								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
+									User
+								</th>
+								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
+									department
+								</th>
+								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
+									Created_at
+								</th>
+								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
+									gender
+								</th>
+								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
+									status
+								</th>
+								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+						{ data !== null ? data.employe.map(data => (
+							<tr key={data._id}>
+								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<div className="flex ">
+										<div className="flex-shrink-0 h-10 w-10">
+											<img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="" />
+										</div>
+										<div className="ml-4">
+											<div className="text-sm font-medium text-gray-900">
+												{data.name}
+											</div>
+											<div className="text-sm text-gray-500">
+												{ data.email }
+											</div>
+										</div>
+									</div>
+								</td>
+								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p className="text-gray-900 whitespace-no-wrap">
+										{ data.department}
+									</p>
+								</td>
+								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p className="text-gray-900 whitespace-no-wrap">
+										{ data.employment_date}
+									</p>
+								</td>
+								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p className="text-gray-900 whitespace-no-wrap">
+										{ data.gender}
+									</p>
+								</td>
+								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+										<span aria-hidden="true" className="absolute inset-0 bg-green-200 opacity-50 rounded-full">
+										</span>
+										<span className="relative">
+											active
+										</span>
+									</span>
+								</td>
+								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<Link to={`/details/${data._id}`} className="text-indigo-600 hover:text-indigo-900">
+										Details
+									</Link>
+								</td>
+								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<a href="/create" className="text-indigo-600 hover:text-indigo-900">
+										Edit
+									</a>
+								</td>
+							</tr>
+							) ): "loading" }
+							</tbody>
+					</table>
+					<div className="px-5 bg-white py-5 flex flex-col xs:flex-row items-center xs:justify-between">
+						<div className="flex items-center">
+							<button type="button" className="w-full p-4 border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100">
+								<svg width="9" fill="currentColor" height="8" className="" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1427 301l-531 531 531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19l-742-742q-19-19-19-45t19-45l742-742q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z">
+									</path>
+								</svg>
+							</button>
+							<button type="button" className="w-full px-4 py-2 border-t border-b text-base text-indigo-500 bg-white hover:bg-gray-100 ">
+								1
+							</button>
+							<button type="button" className="w-full px-4 py-2 border text-base text-gray-600 bg-white hover:bg-gray-100">
+								2
+							</button>
+							<button type="button" className="w-full px-4 py-2 border-t border-b text-base text-gray-600 bg-white hover:bg-gray-100">
+								3
+							</button>
+							<button type="button" className="w-full px-4 py-2 border text-base text-gray-600 bg-white hover:bg-gray-100">
+								4
+							</button>
+							<button type="button" className="w-full p-4 border-t border-b border-r text-base  rounded-r-xl text-gray-600 bg-white hover:bg-gray-100">
+								<svg width="9" fill="currentColor" height="8" className="" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
+									</path>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
     )
 }
