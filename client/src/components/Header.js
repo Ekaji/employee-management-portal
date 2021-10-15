@@ -1,7 +1,7 @@
 const Header = () => {
     return(
         <>
-        <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
+        <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full bg-gray-200">
             <h2 className="text-2xl leading-tight">
                 Users
             </h2>

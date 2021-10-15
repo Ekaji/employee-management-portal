@@ -25,7 +25,11 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.post("/api/employe", (req, res) => {
   const employe = new Employe({
-    name: req.body.name,
+    name: {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      middle_name: req.body.middle_name,
+    },
     address: req.body.address,
     email: req.body.email,
     phone: req.body.phone,
@@ -33,9 +37,14 @@ app.post("/api/employe", (req, res) => {
     photo: req.body.photo,
     department: req.body.department,
     employment_date: req.body.employment_date,
-    departure_date: req.body.departure_date,
+    termination_date: req.body.termination_date,
+    account_details: {
+      account_name: req.body.account_name,
+      account_number: req.body.account_number,
+      bank_name: req.body.bank_name,
+    },
     wage: req.body.wage,
-    userID: req.body.userID,
+    // userID: req.body.userID,
   });
   employe
     .save()
@@ -66,6 +75,16 @@ app.get("/api/employe/:id", (req, res) => {
     })
     .catch((error) => {
       res.status(400).json({ error });
+    });
+});
+
+app.delete("/api/employe/:id", (req, res) => {
+  Employe.deleteOne({ _id: req.params.id })
+    .then(() => {
+      res.status(200).json({ message: "Deleated" }); // Success
+    })
+    .catch((error) => {
+      console.log(error); // Failure
     });
 });
 

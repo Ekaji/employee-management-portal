@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.3.0",
@@ -63,3 +64,4 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }
+
