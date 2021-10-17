@@ -22,17 +22,18 @@ const Form = () => {
     })
 
     const [image, setImage] = useState("");
-    const [imagePreview, setImagePreview] = useState('')
 
     const handleFileChange = (e) => {
       if(e.target.files.length !== 0){
-        setImagePreview(URL.createObjectURL(e.target.files[0]));
         setImage(e.target.files[0])
       }
     }
 
+    const [isImageUploaded, setIsImageUploaded] = useState(false)
     const uploadImage = async () => {
       if(!image) return
+      setIsImageUploaded(true)
+      updateformDetails({ ...formDetails, photo : '' }) // incase of reupload
       const data = new FormData()
       data.append("file", image)
       data.append("upload_preset", "employe image")
@@ -77,11 +78,15 @@ const Form = () => {
                       <div className="col-span-6 sm:col-span-6">
                         <label className="w-64 flex flex-col items-center px-4 py-6 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer hover:bg-purple-600 hover:text-white text-purple-600 ease-linear transition-all duration-150">
                           <i className="fas fa-cloud-upload-alt fa-3x"></i>
-                          <span className="mt-2 text-base leading-normal">Select a file</span>
+                          {formDetails.photo ? <></> : (<span className="mt-2 text-base leading-normal">Select a photo</span>)}
+                          
                           <input type='file' name="photo" className="hidden"  onChange={ handleFileChange } />
-                          <img alt='employe' src={imagePreview} />
+                          {isImageUploaded ? (
+                            <div className={formDetails.photo ? 'hidden' : "" }> uploading photo... please wait</div>
+                          ) : <></>}
+                          
+                          {formDetails.photo ? (<img alt='employe' src={formDetails.photo} />) : <></> }
                         </label>
-                        {/* <button onClick={uploadImage}>Upload</button> */}
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
