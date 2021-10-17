@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react'
 import axios from 'axios'
 
 const Form = () => {
+  const cloudinaryUri = process.env.REACT_APP_CLOUDINARY_URI
 
     const [formDetails, updateformDetails] = useState({
         first_name: '',
@@ -39,7 +40,7 @@ const Form = () => {
       data.append("upload_preset", "employe image")
       data.append("cloud_name", "dtshe5gsz")
 
-      await axios.post("https://api.cloudinary.com/v1_1/dtshe5gsz/image/upload", data )
+      await axios.post( cloudinaryUri, data )
         .then(resp => resp.data)
         .then(data => updateformDetails({ ...formDetails, photo : data.url }))
         .catch(err => console.log(err))
