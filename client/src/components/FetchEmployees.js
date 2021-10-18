@@ -1,49 +1,33 @@
-import {useState, useEffect} from 'react'
 import {Link} from "react-router-dom";
-import axios from 'axios'
 
-const FetchEmployees = () => {
-
-    const [data, setData] = useState(null)
-    
-    const getItems = async () => {
-await axios.get('/api/employe')
-
-            .then(response => setData(response.data ))
-            .catch((error) => {
-                console.log(error)
-            })
-    }
-
-    useEffect(() => {
-        getItems()
-    },[])
+const FetchEmployees = ({data}) => {
 
     console.log(data)
 
     return(
         <div>
-			<div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+			<div className="-mx-4 sm:-mx-8 px-4 sm:px-8 pb-4 overflow-x-auto">
 				<div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
 					<table className="min-w-full ">
 						<thead>
 							<tr>
-								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
-									User
+								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
+									<span className="ml-28">User</span>
 								</th>
 								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
-									department
+									Department
 								</th>
 								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
 									Created_at
 								</th>
 								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
-									gender
+									Gender
+								</th>
+								<th scope="col-full" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
+									Status
 								</th>
 								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
-									status
-								</th>
-								<th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal">
+									<span className="sr-only ">Details</span>
 								</th>
 								
 							</tr>
@@ -92,21 +76,17 @@ await axios.get('/api/employe')
 								</td>
 								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<Link to={`/details/${data._id}`} className="text-indigo-600 hover:text-indigo-900">
-										Details
+										details
 									</Link>
 								</td>
-								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<a href="/create" className="text-indigo-600 hover:text-indigo-900">
-										Edit
-									</a>
-								</td>
+								
 							</tr>
 							) ): "loading" }
 							</tbody>
 					</table>
 					<div className="px-5 bg-white py-5 flex flex-col xs:flex-row items-center xs:justify-between">
 						<div className="flex items-center">
-							<button type="button" className="w-full p-4 border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100">
+							{/* <button type="button" className="w-full p-4 border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100">
 								<svg width="9" fill="currentColor" height="8" className="" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
 									<path d="M1427 301l-531 531 531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19l-742-742q-19-19-19-45t19-45l742-742q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z">
 									</path>
@@ -129,7 +109,7 @@ await axios.get('/api/employe')
 									<path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
 									</path>
 								</svg>
-							</button>
+							</button> */}
 						</div>
 					</div>
 				</div>
