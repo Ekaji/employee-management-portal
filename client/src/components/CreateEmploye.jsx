@@ -1,26 +1,27 @@
 import { useState, useEffect} from 'react'
 import axios from 'axios'
 
-const Form = () => {
+const CreateEmploye = () => {
+
   const cloudinaryUri = process.env.REACT_APP_CLOUDINARY_URI
 
-    const [formDetails, updateformDetails] = useState({
-        first_name: '',
-        last_name: '',
-        middle_name: '',
-        address: '',
-        email: '',
-        phone: '',
-        gender: '',
-        photo: '',
-        department: '',
-        employment_date: '',
-        termination_date: '',
-        wage: '',
-        account_name: '',
-        account_number: '',
-        bank_name: '',
-    })
+  const [formDetails, updateformDetails] = useState({
+      first_name: '',
+      last_name: '',
+      middle_name: '',
+      address: '',
+      email: '',
+      phone: '',
+      gender: '',
+      photo: '',
+      department: '',
+      employment_date: '',
+      termination_date: '',
+      wage: '',
+      account_name: '',
+      account_number: '',
+      bank_name: '',
+  })
 
     const [image, setImage] = useState("");
 
@@ -30,11 +31,12 @@ const Form = () => {
       }
     }
 
-    const [isImageUploaded, setIsImageUploaded] = useState(false)
+    const [isImageUploaded, setIsImageUploaded] = useState(false);
+
     const uploadImage = async () => {
-      if(!image) return
+      // if(!image) return
       setIsImageUploaded(true)
-      updateformDetails({ ...formDetails, photo : '' }) // incase of reupload
+      updateformDetails( { ...formDetails, photo : '' }) // incase of reupload
       const data = new FormData()
       data.append("file", image)
       data.append("upload_preset", "employe image")
@@ -44,14 +46,11 @@ const Form = () => {
         .then(resp => resp.data)
         .then(data => updateformDetails({ ...formDetails, photo : data.url }))
         .catch(err => console.log(err))
-    }
+      }
 
     useEffect(() => {
-      uploadImage()
-    }, [image])
-
-    console.log(formDetails)
-
+     if(image) uploadImage()
+    }, [image]);
 
     const handleFormChange = (e) => {
         updateformDetails({
@@ -184,4 +183,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default CreateEmploye

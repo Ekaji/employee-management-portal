@@ -10,7 +10,7 @@ function App() {
     return (
         <div className="App bg-gray-200 min-h-screen">
           <div className="container mx-auto px-4 sm:px-8  " > 
-            <div className="py-8">
+            <div className="py-1 md:py-8">
               <Switch>
                 <Route path="/" component={Home} exact/>
                 <Route path="/details/:id" component={Details} />
