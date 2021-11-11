@@ -83,7 +83,7 @@ const FetchEmployees = ({data}) => {
 									</span>
 								</td>
 								<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<Link to={`/details/${data._id}`} className="text-indigo-600 hover:text-indigo-900">
+									<Link to={`/detailsb/${data._id}`} className="text-indigo-600 hover:text-indigo-900">
 										details
 									</Link>
 								</td>

@@ -1,5 +1,6 @@
 import Home from './components/Home';
 import Details from './components/Details';
+import Detailsb from './components/Detailsb';
 import Delete from './components/Delete';
 import CreateEmploye from './components/CreateEmploye';
 import { Route, Switch } from 'react-router-dom';
@@ -14,6 +15,7 @@ function App() {
               <Switch>
                 <Route path="/" component={Home} exact/>
                 <Route path="/details/:id" component={Details} />
+                <Route path="/detailsb/:id" component={Detailsb} />
                 <Route path="/create" component={CreateEmploye} />
                 <Route path="/delete" component={Delete} />
               </Switch>

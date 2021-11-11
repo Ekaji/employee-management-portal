@@ -128,7 +128,7 @@ const Details = () => {
                       </div>
                     {/* <div className='grid grid-col-6'>  */}
                       <div className='col-span-6 sm:col-span-2 '>
-                        <label htmlFor="first-name" className="py-2 w-1 text-sm font-medium uppercase text-gray-700">{isInputEditable ? 'First name' : 'name :'}</label>  
+                        <label htmlFor="first-name" className="py-2 w-1  font-medium uppercase text-gray-700">{isInputEditable ? 'First name' : 'name :'}</label>  
                         <input disabled={!isInputEditable} type="text" placeholder={data.employe.name.first_name || ''} name="first_name" id="first-name" value={data.employe.name.first_name} onChange={''} className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500  rounded-md ${isInputEditable ? 'block w-full shadow-sm sm:text-sm border-gray-300' : 'border-none' }`} />
                       </div>
 
@@ -139,7 +139,7 @@ const Details = () => {
 
                       <div className={`${isInputEditable ? 'col-span-6 sm:col-span-2 ' : 'grid grid-cols'} `}>
                         <label htmlFor="middle-name" className={`${isInputEditable ? '' : 'hidden'} text-sm font-medium uppercase text-gray-700`} >middle name </label>
-                        <input disabled={!isInputEditable}  type="text" placeholder={data.employe.name.first_name} name="middle_name" id="first-name" value={data.middle_name}  onChange={''} className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500  rounded-md ${isInputEditable ? 'block w-full shadow-sm sm:text-sm border-gray-300' : 'border-none' }`} />
+                        <input disabled={!isInputEditable}  type="text" placeholder={data.employe.name.middle_name} name="middle_name" id="first-name" value={data.middle_name}  onChange={''} className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500  rounded-md ${isInputEditable ? 'block w-full shadow-sm sm:text-sm border-gray-300' : 'border-none' }`} />
                       </div>
                     {/* </div> */}
 
